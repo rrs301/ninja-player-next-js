@@ -7,7 +7,7 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDsVcT58u5fnibQqpN2sX_OEggbFp0bYqs",
+  apiKey: process.env.FIREBASe_API,
   authDomain: "tubeguruji-app.firebaseapp.com",
   projectId: "tubeguruji-app",
   storageBucket: "tubeguruji-app.appspot.com",
