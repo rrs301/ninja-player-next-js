@@ -114,7 +114,7 @@ function Form() {
           required
           className="w-full mb-4 border-[1px] p-2 rounded-md"
         >
-          <option disabled selected>
+          <option disabled defaultValue>
             Select Game
           </option>
           {Data.GameList.map((item) => (

@@ -52,8 +52,8 @@ function Profile() {
     <div  className="grid grid-cols-1 
     sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
     gap-5 mt-5 px-10">
-      {userPost&&userPost?.map((item)=>(
-        <div>
+      {userPost&&userPost?.map((item,index)=>(
+        <div key={index}>
         <PostItem post={item} modal={true} />
         <button className='bg-red-400 w-full p-1 mt-1
         rounded-md text-white' 

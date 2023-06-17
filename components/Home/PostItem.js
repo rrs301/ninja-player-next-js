@@ -13,7 +13,7 @@ function PostItem({post,modal=false}) {
         <img className="rounded-t-lg 
         w-full h-[180px] object-cover" 
         src={post.image?post.image:PLACEHOLDER}
-         alt="" />
+         alt="banner" />
    
     <div className="p-5">
        
