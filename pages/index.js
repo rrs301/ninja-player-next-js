@@ -7,7 +7,7 @@ import GameList from '../components/Home/GameList'
 import Posts from '../components/Home/Posts'
 import app from '../shared/FirebaseConfig'
 import { getFirestore, doc, setDoc, getDoc, 
-  collection, getDocs } from "firebase/firestore";
+  collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from 'react'
 export default function Home() {
 
@@ -24,6 +24,24 @@ export default function Home() {
    setPosts(posts=>[...posts,doc.data()]);
 });
   }
+
+  const onGamePress=async(gameName)=>{
+    setPosts([]);
+    if(gameName=='Other Games')
+    {
+      getPost();
+      return ;
+    }
+    const q=query(collection(db,"posts"),
+    where("game","==",gameName));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      let data=doc.data();
+      data.id=doc.id
+      setPosts(posts=>[...posts,doc.data()]);
+   
+});
+  }
   
   return (
     <div className='flex flex-col items-center 
@@ -31,7 +49,7 @@ export default function Home() {
       <div className='w-[70%] md:w-[50%] lg:w-[55%]'>
       <Hero/>
         <Search/>
-        <GameList/>
+        <GameList onGamePress={onGamePress}/>
       
       </div>
       {posts? <Posts posts={posts}/>:null}

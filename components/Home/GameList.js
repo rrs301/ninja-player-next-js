@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Data from './../../shared/Data'
-function GameList() {
+function GameList({onGamePress}) {
     const [games,setGames]=useState();
     useEffect(()=>{
        setGames(Data.GameList) 
@@ -9,7 +9,9 @@ function GameList() {
     <div className='grid grid-cols-3 sm:grid-cols-4
     md:grid-cols-5 lg:grid-cols-7 mt-4'>
         {games?.map((item)=>(
-            <div key={item.id} className='flex flex-col 
+            <div key={item.id}
+              onClick={()=>onGamePress(item.name)}
+            className='flex flex-col 
             items-center cursor-pointer
             '>
                 <img src={item.image} 
